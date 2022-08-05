@@ -41,6 +41,7 @@ async function getMustMember(){
 
 async function getPrReviews(repository, pullRequestId){
   let url = 'https://api.github.com/repos/' + repository + '/pulls/' + pullRequestId + '/reviews'
+  core.info("getPrReviews url: " + url);
   let reqConfig = {
     "method" : 'get',
     "headers" : {
