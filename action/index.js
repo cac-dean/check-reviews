@@ -2415,8 +2415,9 @@ async function getPrReviews(repository, pullRequestId){
 async function run(){
 
   const pullRequestId = parsePullRequestId(process.env.GITHUB_REF);
-  const repository = process.env.GITHUB_CONTEXT["repository"];
-  core.info("repository: " + repository);
+  const githubContext = process.env.GITHUB_CONTEXT;
+  const github = JSON.parse(githubContext);
+  core.info("repository: " + github.repository);
 
   let members = await getMustMember();
   if(!members || members.length == 0){
@@ -2425,7 +2426,7 @@ async function run(){
   }
   core.info("must members: " + members.join(','));
 
-  let reviews = await getPrReviews(repository, pullRequestId);
+  let reviews = await getPrReviews( github.repository, pullRequestId);
   if(!reviews || reviews.length == 0){
     core.setFailed('no reviews');
     return;
