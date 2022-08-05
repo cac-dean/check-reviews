@@ -2402,6 +2402,7 @@ async function getPrReviews(repository, pullRequestId){
 
   let result = [];
   if(data){
+    core.info("getPrReviews data: " + JSON.stringify(data));
     for (const reviews of data) {
       if(reviews.state === 'APPROVED'){
         result.push(reviews.user.login);
