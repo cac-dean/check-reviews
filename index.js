@@ -65,7 +65,7 @@ async function getPrReviews(repository, pullRequestId){
 async function run(){
 
   const pullRequestId = parsePullRequestId(process.env.GITHUB_REF);
-  const repository = core.GITHUB_CONTEXT.repository;
+  const repository = process.env.GITHUB_CONTEXT.repository;;
 
   let members = await getMustMember();
 
