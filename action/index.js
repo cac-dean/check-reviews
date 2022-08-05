@@ -2349,10 +2349,9 @@ var __webpack_exports__ = {};
 (() => {
 const core = __nccwpck_require__(87);
 
-//const token = core.getInput('token');
-
-const token = "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";
+const token = core.getInput('token');
 const teams = core.getInput('teams'); //teams id
+
 const fetch = (...args) => __nccwpck_require__.e(/* import() */ 197).then(__nccwpck_require__.bind(__nccwpck_require__, 197)).then(({default: fetch}) => fetch(...args));
 
 const parsePullRequestId = githubRef => {
@@ -2368,20 +2367,83 @@ async function request(url, reqConfig){
   return data;
 }
 
-async function getMustMember(pullRequestId){
-  let url = 'https://api.github.com/repos/104corp/104cac-test-pr/pulls/' + pullRequestId + '/reviews'
+async function getMustMember(){
+  let url = 'https://api.github.com/teams/' + teams + '/members'
   let reqConfig = {
     "method" : 'get',
     "headers" : {
-      "Authorization" : "Bearer " + jwt
+      "Authorization" : "token " + token
     }
+  }
+
+  const data = await request(url, reqConfig);
+
+  let result = [];
+  if(data){
+    for (const member of data) {
+      result.push(member['login']);
+    }
+  }
+
+  return result;
+}
+
+async function getPrReviews(repository, pullRequestId){
+  let url = 'https://api.github.com/repos/' + repository + '/pulls/' + pullRequestId + '/reviews'
+  let reqConfig = {
+    "method" : 'get',
+    "headers" : {
+      "Authorization" : "token " + token
+    }
+  }
+
+  const data = await request(url, reqConfig);
+
+  let result = [];
+  if(data){
+    for (const member of data) {
+      if(member.state === 'APPROVED'){
+        result.push(member.user.login);
+      }
+    }
+  }
+
+  return result;
+}
+
+async function run(){
+
+  const pullRequestId = parsePullRequestId(process.env.GITHUB_REF);
+  const repository = core.GITHUB_CONTEXT.repository;
+
+  let members = await getMustMember();
+
+  if(!members || members.length == 0){
+    core.setFailed('no must members');
+    return;
+  }
+
+  let reviews = getPrReviews(repository, pullRequestId);
+
+  if(!reviews || reviews.length == 0){
+    core.setFailed('no reviews');
+    return;
+  }
+
+  let isPass = false;
+  for (const memberName of reviews) {
+    if(members.indexOf(memberName) != -1){
+      isPass = true;
+      break;
+    }
+  }
+
+  if(!isPass){
+    core.setFailed('no must members approved');
   }
 }
 
-const pullRequestId = parsePullRequestId(process.env.GITHUB_REF);
-
-core.info('GITHUB_CONTEXT' + process.env.GITHUB_CONTEXT);
-core.info('pullRequestId:' + pullRequestId);
+run();
 })();
 
 module.exports = __webpack_exports__;
