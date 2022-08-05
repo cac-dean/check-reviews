@@ -2027,6 +2027,14 @@ module.exports = require("assert");
 
 /***/ }),
 
+/***/ 300:
+/***/ ((module) => {
+
+"use strict";
+module.exports = require("buffer");
+
+/***/ }),
+
 /***/ 361:
 /***/ ((module) => {
 
@@ -2067,6 +2075,102 @@ module.exports = require("net");
 
 /***/ }),
 
+/***/ 254:
+/***/ ((module) => {
+
+"use strict";
+module.exports = require("node:buffer");
+
+/***/ }),
+
+/***/ 561:
+/***/ ((module) => {
+
+"use strict";
+module.exports = require("node:fs");
+
+/***/ }),
+
+/***/ 849:
+/***/ ((module) => {
+
+"use strict";
+module.exports = require("node:http");
+
+/***/ }),
+
+/***/ 286:
+/***/ ((module) => {
+
+"use strict";
+module.exports = require("node:https");
+
+/***/ }),
+
+/***/ 503:
+/***/ ((module) => {
+
+"use strict";
+module.exports = require("node:net");
+
+/***/ }),
+
+/***/ 411:
+/***/ ((module) => {
+
+"use strict";
+module.exports = require("node:path");
+
+/***/ }),
+
+/***/ 742:
+/***/ ((module) => {
+
+"use strict";
+module.exports = require("node:process");
+
+/***/ }),
+
+/***/ 492:
+/***/ ((module) => {
+
+"use strict";
+module.exports = require("node:stream");
+
+/***/ }),
+
+/***/ 477:
+/***/ ((module) => {
+
+"use strict";
+module.exports = require("node:stream/web");
+
+/***/ }),
+
+/***/ 41:
+/***/ ((module) => {
+
+"use strict";
+module.exports = require("node:url");
+
+/***/ }),
+
+/***/ 261:
+/***/ ((module) => {
+
+"use strict";
+module.exports = require("node:util");
+
+/***/ }),
+
+/***/ 628:
+/***/ ((module) => {
+
+"use strict";
+module.exports = require("node:zlib");
+
+/***/ }),
+
 /***/ 37:
 /***/ ((module) => {
 
@@ -2096,6 +2200,14 @@ module.exports = require("tls");
 
 "use strict";
 module.exports = require("util");
+
+/***/ }),
+
+/***/ 267:
+/***/ ((module) => {
+
+"use strict";
+module.exports = require("worker_threads");
 
 /***/ })
 
@@ -2131,10 +2243,105 @@ module.exports = require("util");
 /******/ 		return module.exports;
 /******/ 	}
 /******/ 	
+/******/ 	// expose the modules object (__webpack_modules__)
+/******/ 	__nccwpck_require__.m = __webpack_modules__;
+/******/ 	
 /************************************************************************/
+/******/ 	/* webpack/runtime/define property getters */
+/******/ 	(() => {
+/******/ 		// define getter functions for harmony exports
+/******/ 		__nccwpck_require__.d = (exports, definition) => {
+/******/ 			for(var key in definition) {
+/******/ 				if(__nccwpck_require__.o(definition, key) && !__nccwpck_require__.o(exports, key)) {
+/******/ 					Object.defineProperty(exports, key, { enumerable: true, get: definition[key] });
+/******/ 				}
+/******/ 			}
+/******/ 		};
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/ensure chunk */
+/******/ 	(() => {
+/******/ 		__nccwpck_require__.f = {};
+/******/ 		// This file contains only the entry chunk.
+/******/ 		// The chunk loading function for additional chunks
+/******/ 		__nccwpck_require__.e = (chunkId) => {
+/******/ 			return Promise.all(Object.keys(__nccwpck_require__.f).reduce((promises, key) => {
+/******/ 				__nccwpck_require__.f[key](chunkId, promises);
+/******/ 				return promises;
+/******/ 			}, []));
+/******/ 		};
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/get javascript chunk filename */
+/******/ 	(() => {
+/******/ 		// This function allow to reference async chunks
+/******/ 		__nccwpck_require__.u = (chunkId) => {
+/******/ 			// return url for filenames based on template
+/******/ 			return "" + chunkId + ".index.js";
+/******/ 		};
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/hasOwnProperty shorthand */
+/******/ 	(() => {
+/******/ 		__nccwpck_require__.o = (obj, prop) => (Object.prototype.hasOwnProperty.call(obj, prop))
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/make namespace object */
+/******/ 	(() => {
+/******/ 		// define __esModule on exports
+/******/ 		__nccwpck_require__.r = (exports) => {
+/******/ 			if(typeof Symbol !== 'undefined' && Symbol.toStringTag) {
+/******/ 				Object.defineProperty(exports, Symbol.toStringTag, { value: 'Module' });
+/******/ 			}
+/******/ 			Object.defineProperty(exports, '__esModule', { value: true });
+/******/ 		};
+/******/ 	})();
+/******/ 	
 /******/ 	/* webpack/runtime/compat */
 /******/ 	
 /******/ 	if (typeof __nccwpck_require__ !== 'undefined') __nccwpck_require__.ab = __dirname + "/";
+/******/ 	
+/******/ 	/* webpack/runtime/require chunk loading */
+/******/ 	(() => {
+/******/ 		// no baseURI
+/******/ 		
+/******/ 		// object to store loaded chunks
+/******/ 		// "1" means "loaded", otherwise not loaded yet
+/******/ 		var installedChunks = {
+/******/ 			179: 1
+/******/ 		};
+/******/ 		
+/******/ 		// no on chunks loaded
+/******/ 		
+/******/ 		var installChunk = (chunk) => {
+/******/ 			var moreModules = chunk.modules, chunkIds = chunk.ids, runtime = chunk.runtime;
+/******/ 			for(var moduleId in moreModules) {
+/******/ 				if(__nccwpck_require__.o(moreModules, moduleId)) {
+/******/ 					__nccwpck_require__.m[moduleId] = moreModules[moduleId];
+/******/ 				}
+/******/ 			}
+/******/ 			if(runtime) runtime(__nccwpck_require__);
+/******/ 			for(var i = 0; i < chunkIds.length; i++)
+/******/ 				installedChunks[chunkIds[i]] = 1;
+/******/ 		
+/******/ 		};
+/******/ 		
+/******/ 		// require() chunk loading for javascript
+/******/ 		__nccwpck_require__.f.require = (chunkId, promises) => {
+/******/ 			// "1" is the signal for "already loaded"
+/******/ 			if(!installedChunks[chunkId]) {
+/******/ 				if(true) { // all chunks have JS
+/******/ 					installChunk(require("./" + __nccwpck_require__.u(chunkId)));
+/******/ 				} else installedChunks[chunkId] = 1;
+/******/ 			}
+/******/ 		};
+/******/ 		
+/******/ 		// no external install chunk
+/******/ 		
+/******/ 		// no HMR
+/******/ 		
+/******/ 		// no HMR manifest
+/******/ 	})();
 /******/ 	
 /************************************************************************/
 var __webpack_exports__ = {};
@@ -2142,9 +2349,11 @@ var __webpack_exports__ = {};
 (() => {
 const core = __nccwpck_require__(87);
 
-const token = core.getInput('token');
-const teams = core.getInput('teams'); //teams id
+//const token = core.getInput('token');
 
+const token = "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";
+const teams = core.getInput('teams'); //teams id
+const fetch = (...args) => __nccwpck_require__.e(/* import() */ 197).then(__nccwpck_require__.bind(__nccwpck_require__, 197)).then(({default: fetch}) => fetch(...args));
 
 const parsePullRequestId = githubRef => {
   const result = /refs\/pull\/(\d+)\/merge/g.exec(githubRef);
@@ -2153,8 +2362,25 @@ const parsePullRequestId = githubRef => {
   return pullRequestId;
 };
 
+async function request(url, reqConfig){
+  const res = await fetch(url, reqConfig);
+  const data = await res.json();//assuming data is json
+  return data;
+}
+
+async function getMustMember(pullRequestId){
+  let url = 'https://api.github.com/repos/104corp/104cac-test-pr/pulls/' + pullRequestId + '/reviews'
+  let reqConfig = {
+    "method" : 'get',
+    "headers" : {
+      "Authorization" : "Bearer " + jwt
+    }
+  }
+}
+
 const pullRequestId = parsePullRequestId(process.env.GITHUB_REF);
 
+core.info('GITHUB_CONTEXT' + process.env.GITHUB_CONTEXT);
 core.info('pullRequestId:' + pullRequestId);
 })();
 
