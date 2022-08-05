@@ -1,2 +1,2 @@
 #bash
-ncc build index.js
+ncc build -o action index.js 
