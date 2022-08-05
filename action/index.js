@@ -2401,8 +2401,9 @@ async function getPrReviews(repository, pullRequestId){
   const data = await request(url, reqConfig);
 
   let result = [];
+  core.info("getPrReviews data: " + data);
   if(data){
-    core.info("getPrReviews data: " + JSON.stringify(data));
+    core.info("getPrReviews data json: " + JSON.stringify(data));
     for (const reviews of data) {
       if(reviews.state === 'APPROVED'){
         result.push(reviews.user.login);
