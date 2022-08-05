@@ -2401,9 +2401,9 @@ async function getPrReviews(repository, pullRequestId){
 
   let result = [];
   if(data){
-    for (const member of data) {
-      if(member.state === 'APPROVED'){
-        result.push(member.user.login);
+    for (const reviews of data) {
+      if(reviews.state === 'APPROVED'){
+        result.push(reviews.user.login);
       }
     }
   }
