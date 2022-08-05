@@ -74,7 +74,7 @@ async function run(){
     return;
   }
 
-  let reviews = getPrReviews(repository, pullRequestId);
+  let reviews = await getPrReviews(repository, pullRequestId);
 
   if(!reviews || reviews.length == 0){
     core.setFailed('no reviews');
