@@ -68,18 +68,18 @@ async function run(){
   const repository = process.env.GITHUB_CONTEXT.repository;;
 
   let members = await getMustMember();
-
   if(!members || members.length == 0){
     core.setFailed('no must members');
     return;
   }
+  core.info("must members: " + members.join(','));
 
   let reviews = await getPrReviews(repository, pullRequestId);
-
   if(!reviews || reviews.length == 0){
     core.setFailed('no reviews');
     return;
   }
+  core.info("reviews: " + reviews.join(','));
 
   let isPass = false;
   for (const memberName of reviews) {
